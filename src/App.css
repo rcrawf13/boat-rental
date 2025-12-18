@@ -11,3 +11,53 @@ body {
   background-repeat: no-repeat;
   /* transform: scaleX(-1) */
 }
+
+.navConatiner {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  gap: 1.5rem;
+  top: 1rem;
+}
+
+.navConatiner > ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  font-size: 1rem ;
+  font-family: Century Gothic;
+  padding-left: 5%;
+}
+
+.navConatiner > ul > li:hover {
+  cursor: pointer;
+  
+}
+
+.navConatiner > ul > li {
+  position: relative;
+  cursor: pointer;
+
+
+}
+.navConatiner > ul > li.active::after{
+  content: '';
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: #ccc; 
+  border-radius: 50%;
+  margin: 0; 
+  position:absolute;
+  display: block;
+  left: 50%;
+  top: 115%;
+  translate:-50%;
+
+}
+
+.dotContainer {
+  text-align: center;
+}
+.dot {
+  
+}
