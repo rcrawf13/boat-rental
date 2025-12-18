@@ -16,12 +16,6 @@ const NavBar = ({navButtonOptions}) => {
                 ))}
             </ul>
         </nav>
-        
-        {/* <div className="dotContainer">
-            {navButtonOptions.map(()=>(
-                <span className="dot"></span>
-            ))}
-        </div> */}
     
     </>
   )
