@@ -53,6 +53,7 @@ const NavBar = ({navButtonOptions}) => {
                 key={`listItem-${index}`} 
                 className={decodeURIComponent(location.pathname) === `/${currentItem}`?'active':''} 
                 onClick={(e)=>handleAnchorClick(currentItem,e)}
+                draggable="false"
                 >
                     {currentItem}
                 </a>
