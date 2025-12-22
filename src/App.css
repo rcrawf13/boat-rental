@@ -1,9 +1,3 @@
-
-section {
-  height:100vh;
-  scroll-snap-align: start;
-}
-
 #root {
   height: 100%;
   width: 100%;
@@ -12,22 +6,15 @@ section {
 
 }
 
-#home {
-  background-image: url("./assets/rpedq1k2eue5cnx2rxza786m.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  text-shadow: var(--home-text-shadow);
-}
+
 .splashText  {
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+  font-family: "Imprint MT Shadow";
+
   width: 100%;
   color: aliceblue;
 }
@@ -35,22 +22,27 @@ section {
 .splashText > p {
     margin-top: 4rem;
     margin-bottom: 3.25625rem;
-    font-family: Century Schoolbook;
+    font-family: "Century Schoolbook";
     text-decoration: underline;
     text-decoration-thickness:  .2rem;
     text-underline-offset: -1.8rem;
 
 }
 
-h1 {
-  width: 100%;
-  margin: 0%;
-  text-align: justify;
 
-  font-size: 4rem;
-  text-align: center;
+.heroTextContainer {
   position: relative;
-  font-family: Perpetua Titling MT;
+  height: 25dvh;
+  width: 100dvw;
+  margin: 2rem;
+}
+
+.heroText {
+
+  filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
+  height: 30dvh;
+  width: 100dvw;
+  
 }
 
 
@@ -59,23 +51,42 @@ button {
   max-width: 200px;
   width: 100%;
   height: 3rem;
-  border-radius: 0 100px 0 100px;
-  border: solid aliceblue;
   background: none;
-  color: aliceblue;
-  font-size: 1rem;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-image: url("./assets/curve-button.svg");
+  background-repeat: no-repeat;
   text-shadow: var(--home-text-shadow);
-  box-shadow: var(--home-text-shadow), inset var(--home-text-shadow);
+  transition: transform .2s ease, font-size .2s ease;
+  filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
+
+  color: aliceblue;
+  
 }
 
 button:hover {
   cursor: pointer;
-  background: aliceblue;
   color: #064743;
   box-shadow: inset 0 0 0 ;
+  transform: scale(1.2);
+  font-size: 1.25rem;
+  font-weight: 500;
+  background-color: aliceblue;
+  border-radius: 0px 35px;
 }
 
 
+
+#home {
+  background-image: url("./assets/rpedq1k2eue5cnx2rxza786m.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  text-shadow: var(--home-text-shadow);
+}
 
 #about {
   background-color: #2f6f66;
