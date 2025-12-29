@@ -1,8 +1,10 @@
+import Carousel from "../../carousel/Carousel"
 const AboutSec = () => {
 
   return (
-    <>
-    </>
+  <>
+    <Carousel/>      
+  </>
   )
 }
 

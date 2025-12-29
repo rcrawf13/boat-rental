@@ -1,25 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sulphur+Point:wght@300;400;700&display=swap');
+
+
 #root {
   height: 100%;
   width: 100%;
   position: relative;
-  --home-text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+  --home-text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 
 
-.splashText  {
+.splashItems  {
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: "Imprint MT Shadow";
-
   width: 100%;
   color: aliceblue;
+  animation: fadeSlideUp forwards 1s ease-in-out;
+
 }
 
-.splashText > p {
+.splashItems > p {
     margin-top: 4rem;
     margin-bottom: 3.25625rem;
     font-family: "Century Schoolbook";
@@ -30,18 +34,13 @@
 }
 
 
-.heroTextContainer {
-  position: relative;
-  height: 25dvh;
-  width: 100dvw;
-  margin: 2rem;
-}
 
 .heroText {
 
   filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
-  height: 30dvh;
+  height: clamp(30dvh, 35dvh, 225px);
   width: 100dvw;
+  
   
 }
 
@@ -78,18 +77,56 @@ button:hover {
 
 
 
+@keyframes zoomInOut {
+  0%{
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+  
+}
+
+@keyframes fadeSlideUp {
+  0%{
+    opacity: 0;
+    transform: translate(0, 10rem);
+  }
+
+  100%{
+    opacity: 100%;
+  }
+}
+
+
+
 #home {
-  background-image: url("./assets/rpedq1k2eue5cnx2rxza786m.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   justify-items: center;
   align-items: center;
   text-shadow: var(--home-text-shadow);
 }
 
+#home > .wallpaper {
+  height: 100dvh;
+  width: 100dvw;
+  position: absolute;
+  background-image: url("./assets/rpedq1k2eue5cnx2rxza786m.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: zoomInOut 10s ease-in-out infinite alternate;
+  z-index: -1;
+  
+}
 #about {
   background-color: #2f6f66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+
 }
 #contact {
   background-color: #55948a;
@@ -98,7 +135,3 @@ button:hover {
 #pricing {
   background-color: #7bbbb0;
 }
-
-
-
-

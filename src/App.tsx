@@ -5,16 +5,18 @@ import { Link, Element } from 'react-scroll';
 import './App.css';
 
 function App() {
-  const navButtonOptions: string[] = ["Home","About Us", "Contact", "Pricing"];
+  const navButtonOptions: string[] = ["Home","About Us", "Pricing","Contact"];
   
   return (
     <>
         <NavBar Link={Link} navButtonOptions={navButtonOptions} />
-        {navButtonOptions.map((navButtonOption)=>
-        <SectionBase
-        Element={Element}
-        key={navButtonOption} 
-        navButtonOption={navButtonOption} />)}
+
+          {navButtonOptions.map((navButtonOption)=>
+          <SectionBase
+          Element={Element}
+          key={navButtonOption} 
+          navButtonOption={navButtonOption} />)
+          }
         
     </>
   )

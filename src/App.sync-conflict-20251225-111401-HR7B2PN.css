@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sulphur+Point:wght@300;400;700&display=swap');
+
+
+#root {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  --home-text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+
+.splashItems  {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Imprint MT Shadow";
+  width: 100%;
+  color: aliceblue;
+  animation: fadeSlideUp forwards 1s ease-in-out;
+
+}
+
+.splashItems > p {
+    margin-top: 4rem;
+    margin-bottom: 3.25625rem;
+    font-family: "Century Schoolbook";
+    text-decoration: underline;
+    text-decoration-thickness:  .2rem;
+    text-underline-offset: -1.8rem;
+
+}
+
+
+
+.heroText {
+
+  filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
+  height: clamp(30dvh, 35dvh, 225px);
+  width: 100dvw;
+  
+  
+}
+
+
+button {
+  align-self: center;
+  max-width: 200px;
+  width: 100%;
+  height: 3rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-image: url("./assets/curve-button.svg");
+  background-repeat: no-repeat;
+  text-shadow: var(--home-text-shadow);
+  transition: transform .2s ease, font-size .2s ease;
+  filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
+
+  color: aliceblue;
+  
+}
+
+button:hover {
+  cursor: pointer;
+  color: #064743;
+  box-shadow: inset 0 0 0 ;
+  transform: scale(1.2);
+  font-size: 1.25rem;
+  font-weight: 500;
+  background-color: aliceblue;
+  border-radius: 0px 35px;
+}
+
+
+
+@keyframes zoomInOut {
+  0%{
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+  
+}
+
+@keyframes fadeSlideUp {
+  0%{
+    opacity: 0;
+    transform: translate(0, 10rem);
+  }
+
+  100%{
+    opacity: 100%;
+  }
+}
+
+
+
+#home {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  text-shadow: var(--home-text-shadow);
+}
+
+#home > .wallpaper {
+  height: 100dvh;
+  width: 100dvw;
+  position: absolute;
+  background-image: url("./assets/rpedq1k2eue5cnx2rxza786m.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: zoomInOut 10s ease-in-out infinite alternate;
+  z-index: -1;
+  
+}
+#about {
+  background-color: #2f6f66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+
+}
+#contact {
+  background-color: #55948a;
+}
+
+#pricing {
+  background-color: #7bbbb0;
+}
+
+.embla {
+  /* overflow: hidden; */
+  display: none;
+
+}
+
+.embla__container {
+  display: flex;
+  gap: .8rem;
+  margin-top: 15%;
+  backface-visibility: hidden;
+  /* will-change: transform; */
+
+
+}
+
+@media screen and (max-width:600px) {
+  .embla {
+    display: flex;
+  }
+
+  
+}
+
+
+.embla__slide {
+
+  height:84dvh;
+  width: 23dvw;
+
+  background-color: #FFFFFF;
+  box-sizing: content-box;
+  flex: 0 0 100%;
+  border-radius: 15px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0fr 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 1.75rem;
+  box-sizing: border-box;
+  color: #004C44;
+  box-shadow: var(--home-text-shadow);
+
+  
+
+}
+
+.embla__slide > img {
+  --imgHW:45dvw;
+    max-width: var(--imgHW);
+  align-self: center;
+  justify-self: center;
+}
+
+.embla__slide > p {
+  margin: 0;
+  margin-top: 1.2rem;
+  align-self: self-start;
+  justify-self: center;
+  align-items: center;
+
+  font-size: .85rem;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-wrap: pretty;
+}
+
+
+
+h2 {
+  max-width: 252.4px;
+
+  align-self: center;
+  text-align: center;
+  margin: 0;
+  margin-top: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 100;
+}
+
+.wideScreenContainer {
+  margin-top: 5%;
+  width: 90dvw;
+  height: 85dvh;
+  background-color:#FFFFFF;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(autofill minmax(auto,1fr));
+  grid-template-rows:repeat(6, 1fr);
+  box-sizing: border-box;
+  padding: 1rem;
+}
