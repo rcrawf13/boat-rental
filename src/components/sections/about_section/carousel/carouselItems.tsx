@@ -1,6 +1,6 @@
-import image1 from '../../assets/good-time-boat.svg';
-import image2 from '../../assets/lake-location.svg';
-import image3 from '../../assets/day-start.svg';
+import image1 from '../../../../assets/good-time-boat.svg';
+import image2 from '../../../../assets/lake-location.svg';
+import image3 from '../../../../assets/day-start.svg';
 const cardSectionInfo = [
     {
     title:  `Exclusively on \n Lake Norman`,

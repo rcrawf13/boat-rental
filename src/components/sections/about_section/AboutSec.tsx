@@ -1,4 +1,4 @@
-import Carousel from "../../carousel/Carousel"
+import Carousel from "./carousel/AboutContent"
 const AboutSec = () => {
 
   return (

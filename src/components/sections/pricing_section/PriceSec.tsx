@@ -2,7 +2,9 @@
 const PriceSec = () => {
 
   return (
-    <section id='pricing'></section>
+    <section id='pricing'>
+      
+    </section>
   )
 }
 

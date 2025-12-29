@@ -3,7 +3,7 @@ import cardSectionInfo from './carouselItems';
 import { ShowMore, type ShowMoreRef } from '@re-dev/react-truncate'
 import { motion } from "motion/react";
 import { useRef } from 'react';
-import './carousel.css'; 
+import './about.css'; 
 const Carousel = () => {
   const [carouselRef] = useEmblaCarousel({duration:10});
   const refs = useRef<ShowMoreRef[]>([]);
