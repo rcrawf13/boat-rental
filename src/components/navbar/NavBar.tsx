@@ -1,9 +1,13 @@
 import { useEffect,useState } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import './navbar.css';
 
-const 
-NavBar = ({navButtonOptions, Link}) => {
+interface NavBarProps {
+    navButtonOptions: string[];
+    Link: React.ElementType;
+}
+
+const NavBar = ({navButtonOptions, Link}:NavBarProps) => {
         const [url,setUrl] = useState();
         const navigate = useNavigate();
 
@@ -23,7 +27,7 @@ NavBar = ({navButtonOptions, Link}) => {
     return (
         <>
             <nav className="navConatiner">
-                {navButtonOptions.map((navOption) => {
+                {navButtonOptions.map((navOption:string) => {
                     return(
                         <Link 
                             smooth={true} 
