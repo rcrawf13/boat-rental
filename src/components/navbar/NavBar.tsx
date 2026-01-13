@@ -8,7 +8,7 @@ interface NavBarProps {
 }
 
 const NavBar = ({navButtonOptions, Link}:NavBarProps) => {
-        const [url,setUrl] = useState();
+        const [url,setUrl] = useState("");
         const navigate = useNavigate();
 
         useEffect(()=>{
