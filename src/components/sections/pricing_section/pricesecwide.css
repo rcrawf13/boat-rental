@@ -1,0 +1,72 @@
+.priceWideScreenContainer {
+    width: 90%;
+    height: 85%;
+    top: 12%;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 2;
+    border-radius: 15px;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    box-shadow: var(--home-text-shadow);
+    visibility: hidden;
+    box-sizing: border-box;
+    padding: .8rem;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    color: #064743;
+ }
+
+ @media  (min-width:600px) {
+    .priceWideScreenContainer {
+        visibility: visible;
+    }
+ }
+
+
+ .dynamicPricingSect {
+    border-radius: 15px 0px 0px 15px;
+    height: 100%;
+    max-width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    
+ }
+
+ .dynamicPricingSect > .durCont {
+ }
+.dynamicPricingSect > .durCont > .duratonBtns {
+    min-width: 200px;
+    max-width: 30%;
+}
+
+
+.dynamicPricingSect > .durCont > .duratonBtns > #customTime {
+    min-height: 5vh ;
+    min-width: 5vh;
+}
+
+/* .dynamicPricingSect > .durCont > .duratonBtns > */
+
+
+.dynamicPricingSect > .durCont > .custDurCont > div > div > #base-ui-_r_1_ {
+    width: 50%;
+}
+  .vidCon {
+    height: 100%;
+
+ }
+
+.vidCon > video {
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 0px 15px 15px 0px;
+    object-fit: cover;
+
+}

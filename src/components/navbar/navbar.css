@@ -30,7 +30,7 @@
   cursor: pointer;
 }
 
-.navConatiner > a:hover::after {
+/* .navConatiner > a:hover::after {
   content: '';
   display: inline-block;
   width: 10px; height: 10px;
@@ -43,7 +43,7 @@
   left: 50%;
   top: var(--navIndicatorYPost);
   translate:-50%;
-}
+} */
 
 .navConatiner > a {
   text-decoration: none;
@@ -64,6 +64,8 @@
   left: 50%;
   top: var(--navIndicatorYPost);
   translate:-50%;
+  transition: transform .5s ease;
+
 
 }
 
@@ -83,9 +85,7 @@
 
 
 a.active {
-  font-size: 1.25rem;
-  bottom:.5rem;
+  transform: scale(1.25);
+  transform: translateY(-0.5rem) scale(1.25);
 
 }
-
-

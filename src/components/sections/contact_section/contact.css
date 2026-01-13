@@ -1,0 +1,77 @@
+#contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150vh;
+    position: relative;
+}
+.contactWideScreenContain {
+    color: #3A745C;
+    width: 90%;
+    height: auto;
+    top: 6.5%;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 2;
+    border-radius: 15px;
+    box-shadow: var(--home-text-shadow);
+    box-sizing: border-box;
+    padding: 1rem;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.greyBox {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: center;    
+
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.nameInputs {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+.nameInputs > * {
+    width: 100%;
+}
+
+.greyBox > h3 {
+    font-family: inter, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    margin: 0;
+}
+
+
+.greyBox > button {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    transition: transform .1s ease-in-out;
+    background-image: url('./../../../assets/curve-button-inverted.svg');
+    background-repeat: no-repeat;
+    background-size: 90% 100%;
+    background-position: center;
+    height: 50px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.greyBox > button:hover {
+    transform: scale(1.25)
+}

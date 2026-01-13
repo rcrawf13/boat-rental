@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   const navButtonOptions: string[] = ["Home","About Us", "Pricing","Contact"];
-  
+
   return (
     <>
         <NavBar Link={Link} navButtonOptions={navButtonOptions} />
