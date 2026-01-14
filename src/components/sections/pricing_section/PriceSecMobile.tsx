@@ -1,4 +1,4 @@
-import pontonVid from './../../../assets/pVid2.mp4';
+import pontonImg from './../../../assets/PontoonBoatBlr.webp';
 import DurationButtons from './DurationButtons';
 
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
@@ -18,9 +18,10 @@ const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}:PriceSec
           <div className="priceQuote">
           <p>{currentPrice}</p>
           </div>
-          <video playsInline loop autoPlay muted>
+          {/* <video playsInline loop autoPlay muted>
             <source type='video/mp4' src={pontonVid} />
-          </video>
+          </video> */}
+          <img src={pontonImg} alt="" />
         </div>
         <DurationButtons 
         setCurrentPrice={setCurrentPrice} 

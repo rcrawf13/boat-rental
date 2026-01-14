@@ -1,4 +1,4 @@
-import pontonVid from './../../../assets/pVid2.mp4';
+import pontoonPic from './../../../assets/PontoonBoatBlr.webp'
 import DurationButtons from './DurationButtons';
 import './pricesecwide.css'
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
@@ -35,9 +35,10 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
                 <p>{currentPrice}</p>
                 </div>
             </div>
-            <video playsInline loop autoPlay muted>
+            <img src={pontoonPic} alt="" />
+            {/* <video playsInline loop autoPlay muted>
                 <source type='video/mp4' src={pontonVid} />
-            </video>
+            </video> */}
         </div>
     </div>
   )

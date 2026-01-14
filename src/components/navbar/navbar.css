@@ -1,20 +1,33 @@
-.navConatiner {
+.navConatiner { /* Keeping your spelling to match your JSX */
   list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 2rem;
-  font-size: 1rem ;
+  font-size: 1rem;
   font-family: "Century ", sans-serif;
+  
+  /* Positioning */
   position: fixed;
   top: 4%;
+  width: 100%;
+  z-index: 100;
+  
+  /* Visuals */
   user-select: none;
   text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.509);
-  z-index: 100;
-  width: 100%;
   
+  /* --- THE FIX: GPU ACCELERATION --- */
+  /* 1. Promotes to its own layer */
+  transform: translateZ(0); 
+  /* 2. Hints to browser to optimize for movement/layering */
+  will-change: transform;   
+  /* 3. Prevents text flickering during the composite step */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; 
+
   --navIndicatorYPost: 40%;
-  }
+}
 
 @media (max-width:450px) {
 .navConatiner {
