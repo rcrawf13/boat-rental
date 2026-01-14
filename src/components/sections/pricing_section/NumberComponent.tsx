@@ -1,7 +1,13 @@
 import { NumberField } from '@base-ui/react/number-field';
 import cirlePlus from "./../../../assets/circle-add.svg"
 import cirleMinus from "./../../../assets/circle-minus.svg"
-const NumberComponent = ({handleOpen,updateCurrentPrice}) => {
+
+type updateCurrentPriceFnType = (value: null | number) => void;
+interface NumberComponentProps {
+    updateCurrentPrice:updateCurrentPriceFnType
+}
+
+const NumberComponent = ({updateCurrentPrice}:NumberComponentProps) => {
     
     return (
 

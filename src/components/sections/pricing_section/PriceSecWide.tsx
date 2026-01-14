@@ -1,7 +1,17 @@
 import pontonVid from './../../../assets/pVid2.mp4';
 import DurationButtons from './DurationButtons';
 import './pricesecwide.css'
-const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}) => {
+type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
+type setActiveType = React.Dispatch<React.SetStateAction<number>>;
+
+interface PriceSecWide {
+  currentPrice:string;
+  active:number;
+  setCurrentPrice:setCurrentPriceType
+  setActive:setActiveType
+  
+}
+const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWide) => {
   return (
     <div className="priceWideScreenContainer">
         <div className="dynamicPricingSect">

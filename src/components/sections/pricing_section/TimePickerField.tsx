@@ -1,12 +1,10 @@
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
+import dayjs from 'dayjs';
 
-const TimePickerField = ({active}) => {
+const TimePickerField = () => {
   const now = dayjs();
-  const currentHour = now.hour();
   const futureHour = now.add(1,"hour").hour();
 
   const flooredHour = Math.floor(futureHour)

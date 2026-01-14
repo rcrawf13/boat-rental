@@ -2,6 +2,7 @@ import HomeSec from "./sections/home_section/HomeSec";
 import AboutSec from "./sections/about_section/AboutSec";
 import ContactSec from "./sections/contact_section/ContactSec";
 import PriceSec from "./sections/pricing_section/PriceSec";
+
 interface SectionBaseProps {
 navButtonOption:string
 Element: React.ElementType

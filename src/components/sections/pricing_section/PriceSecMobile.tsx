@@ -1,7 +1,16 @@
 import pontonVid from './../../../assets/pVid2.mp4';
 import DurationButtons from './DurationButtons';
 
-const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}) => {
+type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
+type setActiveType = React.Dispatch<React.SetStateAction<number>>;
+interface PriceSecMobileProps {
+  currentPrice:string;
+  active:number;
+  setCurrentPrice:setCurrentPriceType;
+  setActive:setActiveType
+}
+
+const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecMobileProps) => {
   return (
       <div className="mobile-content-container">
         <h3>Pontoon Cruise</h3>
@@ -13,7 +22,10 @@ const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}) => {
             <source type='video/mp4' src={pontonVid} />
           </video>
         </div>
-        <DurationButtons setCurrentPrice={setCurrentPrice} active={active} setActive={setActive}/>
+        <DurationButtons 
+        setCurrentPrice={setCurrentPrice} 
+        active={active} 
+        setActive={setActive}/>
         
         <div className="includedList">
           <h4>Whats Included</h4>

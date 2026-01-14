@@ -4,8 +4,8 @@ import lakevideo from '../../../assets/lake.mp4'
 import PriceSecMobile from './PriceSecMobile';
 import PriceSecWide from './PriceSecWide';
 const PriceSec = () => {
-const [currentPrice,setCurrentPrice] = useState('$250.00');
-const [active,setActive] = useState(2);
+const [currentPrice,setCurrentPrice] = useState<string>('$250.00');
+const [active,setActive] = useState<number>(2);
 
 
 

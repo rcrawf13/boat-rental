@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import './about.css'; 
 
 const WideScreen = () => {
-    const refs = useRef<ShowMoreRef[]>([]);
+    const refs = useRef<(ShowMoreRef|null)[]>([]);
 
   return (
           <div className="wideScreenContainer">
@@ -29,9 +29,9 @@ const WideScreen = () => {
                 </h3>
                 <ShowMore
                   lines={5}
-                  ref={el => refs.current[index] = el}
-                  more={<p style={{'cursor':'pointer'}} onClick={(e)=>refs.current[index].toggleLines(e)}>read more</p>}
-                  less={<p style={{'cursor':'pointer'}} onClick={(e)=>refs.current[index].toggleLines(e)}>show less</p>}
+                  ref={el => {refs.current[index] = el}}
+                  more={<p style={{'cursor':'pointer'}} onClick={(e)=>refs.current[index]?.toggleLines(e)}>read more</p>}
+                  less={<p style={{'cursor':'pointer'}} onClick={(e)=>refs.current[index]?.toggleLines(e)}>show less</p>}
                   >
                   {itemObject.paragraph}
                 </ShowMore>
