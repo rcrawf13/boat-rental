@@ -1,6 +1,7 @@
 import pontoonPic from './../../../assets/PontoonBoatBlr.webp'
 import DurationButtons from './DurationButtons';
-import { motion } from "motion/react";
+import { useEffect } from 'react';
+import { motion,useAnimate } from "motion/react";
 import './pricesecwide.css';
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
 type setActiveType = React.Dispatch<React.SetStateAction<number>>;
@@ -13,6 +14,11 @@ interface PriceSecWide {
   
 }
 const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWide) => {
+  const [scope,animate] = useAnimate();
+  useEffect(()=>{
+    animate(scope.current,{ scale: [1,1.2],opacity:[0,1]},{ duration: 0.5 })
+  },[currentPrice]);
+
   return (
     <div className="priceWideScreenContainer">
         <div className="dynamicPricingSect">
@@ -33,15 +39,13 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
         <div className="vidCon">
             <div className="priceQuoteCont">
                 <div className="priceQuote">
-                  
-                {/* <p>{currentPrice}</p> */}
-                <motion.p 
-                key={currentPrice}
-                initial={{ scale: 1, opacity:0}}
-                animate={{ scale: 1.2, opacity:1 }}
-                transition={{ duration: 0.2 }}>
+                <p>
+                <motion.span 
+                ref={scope}
+                >
                   {currentPrice}
-                </motion.p>
+                </motion.span>
+                </p>
                 </div>
             </div>
             <img src={pontoonPic} alt="" />
