@@ -42,7 +42,11 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
         </div>
         <div className="vidCon">
             <div className="priceQuoteCont">
-                <div className="priceQuote">
+
+            </div>
+
+            <div className="imgCon">
+                  <div className="priceQuote">
                   <p>
                   <motion.span 
                   ref={scope}
@@ -51,8 +55,8 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
                   </motion.span>
                   </p>
                 </div>
+              <img src={pontoonPic} alt="" />
             </div>
-            <img src={pontoonPic} alt="" />
         </div>
     </div>
   )

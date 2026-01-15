@@ -182,9 +182,6 @@
 }
 
 
-
-
-
 .includedList {
   font-family: inter;
 }
@@ -220,7 +217,7 @@ h4 {
   gap: .5rem;
 }
 
- .test {
+.test {
   border-radius: 100px;
   border: #2F6F66 solid 2pt ;
   height: 4dvh;
