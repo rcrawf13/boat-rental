@@ -1,6 +1,7 @@
 import pontonImg from './../../../assets/PontoonBoatBlr.webp';
 import DurationButtons from './DurationButtons';
-
+import { useEffect } from 'react';
+import { motion, useAnimate } from "motion/react";
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
 type setActiveType = React.Dispatch<React.SetStateAction<number>>;
 interface PriceSecMobileProps {
@@ -11,16 +12,21 @@ interface PriceSecMobileProps {
 }
 
 const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecMobileProps) => {
+  const [scope,animate] = useAnimate();
+  useEffect(()=>{
+    animate(scope.current,{opacity:[0,1],scale:[0,1]},)
+  },[currentPrice])
   return (
       <div className="mobile-content-container">
         <h3>Pontoon Cruise</h3>
         <div className="priceQuoteCont">
           <div className="priceQuote">
-          <p>{currentPrice}</p>
+        <motion.p 
+        ref={scope}
+        >
+          {currentPrice}
+        </motion.p>
           </div>
-          {/* <video playsInline loop autoPlay muted>
-            <source type='video/mp4' src={pontonVid} />
-          </video> */}
           <img src={pontonImg} alt="" />
         </div>
         <DurationButtons 
