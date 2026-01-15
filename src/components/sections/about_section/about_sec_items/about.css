@@ -84,7 +84,8 @@ h2 {
 .wideScreenContainer {
   margin-top: 3%;
   width: 90dvw;
-  height: 85dvh;
+  height: 85%;
+  overflow: hidden;
   background-color:#FFFFFF;
   border-radius: 15px;
   padding: 1.5rem;
@@ -120,9 +121,6 @@ h2 {
     overflow-y: scroll;
   }
 
-  .img-text-con > .imgCon {
-
-  }
 
   
 }
@@ -158,20 +156,15 @@ h2 {
   grid-column: span 12;
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(25dvw,1fr));
-  grid-template-rows: 1fr;
   gap: 1rem;
 }
 
 
-.perks-cont > .card {
-  height: fit-content;
-  max-height: 90%;
+.card {
   display: grid;
   justify-items: center;
-  grid-template-rows: .5fr 1fr 3fr;
-  grid-template-columns: 1fr;
-
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  grid-template-rows: repeat(auto-fil,minmax(150px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
   border-radius: 15px;
   box-sizing: border-box;
   padding: .8rem;
@@ -201,17 +194,17 @@ h2 {
 .card > img {
   height:9dvh;
   margin-bottom: .5rem;
+  display: block;
 }
 
 
 
 .card > div {
-  width: 100%; height: auto;
+  width: 100%; height: fit-content;
   font-size: .85rem;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  text-wrap: pretty;
   margin: 0%;
   margin-top: .8rem;
   max-width: 400px;
@@ -220,11 +213,14 @@ h2 {
 
 @media (max-height:488px) {
   
-  .card > img {
-    height:50%;
-  }
+
   .card > div {
     display: none;
   }
+
+}
+
+.card > * {
+    text-wrap: pretty;
 
 }

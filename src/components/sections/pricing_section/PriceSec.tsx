@@ -23,11 +23,7 @@ const [active,setActive] = useState<number>(2);
       setActive={setActive}
       setCurrentPrice={setCurrentPrice}
       />
-      {/* <div className='pricingVideoContainer'>
-        <video playsInline autoPlay muted loop preload='auto' id='pricingBgVideo' >
-          <source src={lakevideo} type='video/mp4' />
-        </video>
-      </div> */}
+
     </>
   )
 }

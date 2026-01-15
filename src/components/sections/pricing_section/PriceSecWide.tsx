@@ -1,6 +1,7 @@
 import pontoonPic from './../../../assets/PontoonBoatBlr.webp'
 import DurationButtons from './DurationButtons';
-import './pricesecwide.css'
+import { motion } from "motion/react";
+import './pricesecwide.css';
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
 type setActiveType = React.Dispatch<React.SetStateAction<number>>;
 
@@ -32,13 +33,18 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
         <div className="vidCon">
             <div className="priceQuoteCont">
                 <div className="priceQuote">
-                <p>{currentPrice}</p>
+                  
+                {/* <p>{currentPrice}</p> */}
+                <motion.p 
+                key={currentPrice}
+                initial={{ scale: 1, opacity:0}}
+                animate={{ scale: 1.2, opacity:1 }}
+                transition={{ duration: 0.2 }}>
+                  {currentPrice}
+                </motion.p>
                 </div>
             </div>
             <img src={pontoonPic} alt="" />
-            {/* <video playsInline loop autoPlay muted>
-                <source type='video/mp4' src={pontonVid} />
-            </video> */}
         </div>
     </div>
   )

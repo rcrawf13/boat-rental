@@ -215,7 +215,7 @@ h4 {
 .durCont > p {
   margin: .35rem;
   padding: 0;
-  align-self: start;
+  align-self: center;
 }
 
 .custDurCont {
