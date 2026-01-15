@@ -1,7 +1,7 @@
 .priceWideScreenContainer {
     width: 90%; max-width: 1600px;
 
-    height: 85%;
+    height: fit-content;
     top: 12%;
     background-color: #FFFFFF;
     position: absolute;
