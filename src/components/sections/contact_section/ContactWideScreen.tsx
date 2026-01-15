@@ -1,5 +1,6 @@
 import TextField from "@mui/material/TextField"
 import { styled } from "@mui/material/styles"
+import {motion} from 'motion/react';
 
 // FIX 1: Define this OUTSIDE the component function
 const MyTextField = styled(TextField)({
@@ -48,7 +49,11 @@ const ContactWideScreen = () => {
           required
           InputLabelProps={{shrink: true}}
         />
-        <button>Send Message</button>
+        <motion.button
+        whileHover={{cursor:'pointer'}}
+        initial={{scale:1}}
+        whileTap={{scale:.90}}
+        >Send Message</motion.button>
       </div>
     </div>
   )

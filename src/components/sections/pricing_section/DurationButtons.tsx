@@ -1,5 +1,6 @@
 import React, { useState, type Dispatch, type SetStateAction } from "react"
 import NumberComponent from "./NumberComponent";
+import { motion } from "motion/react"
 type setActiveType = Dispatch<SetStateAction<number>>;
 type setCurrentPriceType = Dispatch<SetStateAction<string>>;
 interface DurationButtonsProps  {
@@ -37,15 +38,30 @@ const DurationButtons = ({active,setActive,setCurrentPrice}:DurationButtonsProps
     <div className="durCont">
     <p>Choose Your time on the water</p>
       <div className="duratonBtns">
-        <button 
-        style={active == 2 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66"}} 
+        <motion.button
+        whileHover={{cursor:'pointer'}}
+        initial={{scale:1}}
+        whileTap={{scale:.95}}
+        style={active == 2 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66",transformOrigin:'center'}} 
         value={2} 
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}>2 Hrs</button>
-        <button 
-        style={active == 4 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66"}} value={4} 
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}>4 Hrs</button>
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}
+        >2 Hrs</motion.button>
 
-        <button id="customTime" onClick={handleOpen}></button>
+        <motion.button
+        whileHover={{cursor:'pointer'}}         
+        initial={{scale:1}}
+        whileTap={{scale:.95}}
+        style={active == 4 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66",transformOrigin:'center'}} value={4} 
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}>4 Hrs
+        </motion.button>
+
+        <motion.button 
+        whileHover={{cursor:'pointer'}}
+        initial={{scale:1}}
+        whileTap={{scale:.95}}
+        style={{transformOrigin:'center'}}
+        id="customTime" 
+        onClick={handleOpen}></motion.button>
       </div>
     </div>)
     

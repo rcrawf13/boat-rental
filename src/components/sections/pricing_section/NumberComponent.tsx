@@ -20,7 +20,7 @@ const NumberComponent = ({updateCurrentPrice}:NumberComponentProps) => {
                 <NumberField.Group style={{display:'flex', alignItems:'center',justifyItems:'center'}}>
                     <NumberField.Decrement style={{border:'none', background:'none', cursor:'pointer'}}>
                         <motion.img 
-                        whileTap={{scale:.8}}
+                        whileTap={{scale:.8,pointerEvents:'none'}}
                         src={cirleMinus} 
                         style={{height:'5dvh', width:'5dvh'}} />
                     </NumberField.Decrement>
@@ -29,7 +29,7 @@ const NumberComponent = ({updateCurrentPrice}:NumberComponentProps) => {
                         style={{textAlign:'center',color:'#2F6F66'}} />
                     <NumberField.Increment style={{border:'none', background:'none', cursor:'pointer'}} >
                         <motion.img 
-                        whileTap={{scale:.8}}
+                        whileTap={{scale:.8,pointerEvents:'none'}}
                         src={cirlePlus} 
                         style={{height:'5dvh', width:'5dvh'}} />
                     </NumberField.Increment>

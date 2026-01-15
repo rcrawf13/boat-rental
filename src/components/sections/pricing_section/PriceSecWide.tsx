@@ -34,18 +34,22 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
             <li>Free Cancellations <small>(24hrs)</small></li>
           </ul>
         </div>
-        <button id='submitBttn'>Book Now</button>
+        <motion.button
+        style={{cursor:'pointer'}}
+        initial={{scale:1}} 
+        whileTap={{scale:.85}}
+        id='submitBttn'>Book Now</motion.button>
         </div>
         <div className="vidCon">
             <div className="priceQuoteCont">
                 <div className="priceQuote">
-                <p>
-                <motion.span 
-                ref={scope}
-                >
-                  {currentPrice}
-                </motion.span>
-                </p>
+                  <p>
+                  <motion.span 
+                  ref={scope}
+                  >
+                    {currentPrice}
+                  </motion.span>
+                  </p>
                 </div>
             </div>
             <img src={pontoonPic} alt="" />

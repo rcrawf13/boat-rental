@@ -1,4 +1,5 @@
-import splashImage from "../../../assets/hero-text.svg"
+import splashImage from "../../../assets/hero-text.svg";
+import {motion} from 'motion/react';
 const HomeSec = () => {
 
   return (
@@ -7,7 +8,12 @@ const HomeSec = () => {
       <div draggable="false" className="splashItems">
           <img className="heroText" src={splashImage} alt="Nomad Adventure Rental" />
           <p>Affordable boat rentals for every adventure.</p>
-          <button>Book Now</button>
+          <motion.button
+          initial={{scale:1}}
+          whileTap={{scale:.9}}
+          >
+            Book Now
+          </motion.button>
         </div>
     </>
     

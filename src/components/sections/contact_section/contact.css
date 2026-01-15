@@ -61,7 +61,6 @@
     appearance: none;
     background-color: transparent;
     border: none;
-    transition: transform .1s ease-in-out;
     background-image: url('./../../../assets/curve-button-inverted.svg');
     background-repeat: no-repeat;
     background-size: 90% 100%;
@@ -72,6 +71,3 @@
     user-select: none;
 }
 
-.greyBox > button:hover {
-    transform: scale(1.25)
-}

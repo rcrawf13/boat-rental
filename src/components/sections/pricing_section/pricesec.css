@@ -176,19 +176,13 @@
   background-image: url("./../../../assets/curve-button-inverted.svg");
   background-repeat: no-repeat;
   background-position: center;
-  transition: transform .2s ease, font-size .2s ease;
   color: #FFFFFF;
   padding: 0%;
   
 }
 
 
-#submitBttn:hover {
-  font-size: 1.25rem;
-  font-weight: 500;
-  transform: scale(1.2);
-  cursor: pointer;
-}
+
 
 
 .includedList {
