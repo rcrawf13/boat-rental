@@ -107,14 +107,15 @@
   }
 
 
-.duratonBtns {
+.durationBtns {
   display: flex;
   justify-content: center;
   gap: .5rem;
+  max-width: 100%;
 }
 
 
-.duratonBtns > button {
+.durationBtns > button {
   border-radius: 100px;
   background-color: #2F6F66;
   color: #FFFFFF;

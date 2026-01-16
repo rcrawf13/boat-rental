@@ -37,7 +37,7 @@ const DurationButtons = ({active,setActive,setCurrentPrice}:DurationButtonsProps
         {open?(    
     <div className="durCont">
     <p>Choose Your time on the water</p>
-      <div className="duratonBtns">
+      <div className="durationBtns">
         <motion.button
         whileHover={{cursor:'pointer'}}
         initial={{scale:1}}

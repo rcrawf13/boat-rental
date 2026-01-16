@@ -1,5 +1,5 @@
 import TextField from "@mui/material/TextField"
-// import DurationButtons from "../../../components/sections/pricing_section/DurationButtons"
+import DurationButtons from "../../../components/sections/pricing_section/DurationButtons"
 const BookingForm = () => {
   return (
         <div className="bookingForm">
@@ -19,7 +19,7 @@ const BookingForm = () => {
               label='Phone Number'
               />
           </div>
-          {/* <DurationButtons/> */}
+          <DurationButtons />
       </div>
   )
 }

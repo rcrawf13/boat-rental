@@ -40,12 +40,12 @@
  }
 
 
-.dynamicPricingSect > .durCont > .duratonBtns {
+.dynamicPricingSect > .durCont > .durationBtns {
     min-width: 200px;
     max-width: 30%;
 }
 
-.dynamicPricingSect > .durCont > .duratonBtns > #customTime {
+.dynamicPricingSect > .durCont > .durationBtns > #customTime {
     min-height: 5vh ;
     min-width: 5vh;
 }
