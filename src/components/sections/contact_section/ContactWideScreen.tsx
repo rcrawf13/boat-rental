@@ -1,6 +1,5 @@
 import TextField from "@mui/material/TextField"
 import { styled } from "@mui/material/styles"
-import {motion} from 'motion/react';
 import BookingButton from "../../booking_button/BookingButton";
 
 const MyTextField = styled(TextField)({
