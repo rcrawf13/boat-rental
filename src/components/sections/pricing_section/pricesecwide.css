@@ -1,7 +1,6 @@
 .priceWideScreenContainer {
     width: 90%; max-width: 1600px;
-
-    height: fit-content;
+    height: 80%;
     top: 12%;
     background-color: #FFFFFF;
     position: absolute;
@@ -12,7 +11,6 @@
     align-items: center;
     justify-content: center;
     min-width: 0;
-
     box-sizing: border-box;
     box-shadow: var(--home-text-shadow);
     visibility: hidden;

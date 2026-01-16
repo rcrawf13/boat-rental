@@ -1,8 +1,8 @@
 import TextField from "@mui/material/TextField"
 import { styled } from "@mui/material/styles"
 import {motion} from 'motion/react';
+import BookingButton from "../../booking_button/BookingButton";
 
-// FIX 1: Define this OUTSIDE the component function
 const MyTextField = styled(TextField)({
     '& .MuiInputLabel-root': {
                 color:'#3A745C',
@@ -34,7 +34,6 @@ const ContactWideScreen = () => {
           />
         </div>
         
-        {/* You can mix and match! These will still be the normal blue ones */}
         <MyTextField
           sx={{ width: '100%' }}
           label="Subject"
@@ -49,11 +48,7 @@ const ContactWideScreen = () => {
           required
           InputLabelProps={{shrink: true}}
         />
-        <motion.button
-        whileHover={{cursor:'pointer'}}
-        initial={{scale:1}}
-        whileTap={{scale:.90}}
-        >Send Message</motion.button>
+        <BookingButton variant="filled" label="Send Message" customCB={()=>console.log("Message Sent")} />
       </div>
     </div>
   )

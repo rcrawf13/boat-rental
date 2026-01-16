@@ -2,6 +2,7 @@ import pontoonPic from './../../../assets/PontoonBoatBlr.webp'
 import DurationButtons from './DurationButtons';
 import { useEffect } from 'react';
 import { motion,useAnimate } from "motion/react";
+import BookingButton from '../../booking_button/BookingButton';
 import './pricesecwide.css';
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
 type setActiveType = React.Dispatch<React.SetStateAction<number>>;
@@ -34,11 +35,13 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
             <li>Free Cancellations <small>(24hrs)</small></li>
           </ul>
         </div>
-        <motion.button
+
+        <BookingButton variant={'filled'} />
+        {/* <motion.button
         style={{cursor:'pointer'}}
         initial={{scale:1}} 
         whileTap={{scale:.85}}
-        id='submitBttn'>Book Now</motion.button>
+        id='submitBttn'>Book Now</motion.button> */}
         </div>
         <div className="vidCon">
             <div className="priceQuoteCont">
