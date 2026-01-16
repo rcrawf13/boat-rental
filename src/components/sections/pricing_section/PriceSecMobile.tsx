@@ -1,5 +1,6 @@
 import pontonImg from './../../../assets/PontoonBoatBlr.webp';
 import DurationButtons from './DurationButtons';
+import BookingButton from '../../booking_button/BookingButton';
 import { useEffect } from 'react';
 import { motion, useAnimate } from "motion/react";
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
@@ -44,7 +45,8 @@ const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}:PriceSec
           </ul>
         </div>
 
-        <button id='submitBttn'>Book Now</button>
+        <BookingButton variant={'filled'} />
+
       </div>  )
 }
 

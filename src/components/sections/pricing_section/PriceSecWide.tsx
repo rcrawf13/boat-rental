@@ -37,11 +37,6 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
         </div>
 
         <BookingButton variant={'filled'} />
-        {/* <motion.button
-        style={{cursor:'pointer'}}
-        initial={{scale:1}} 
-        whileTap={{scale:.85}}
-        id='submitBttn'>Book Now</motion.button> */}
         </div>
         <div className="vidCon">
             <div className="priceQuoteCont">

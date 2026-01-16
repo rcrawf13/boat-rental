@@ -83,7 +83,6 @@ h2 {
 
 .wideScreenContainer {
   margin-top: 3%;
-  width: 90%;
   max-width: 1600px;
   height: 85%;
   overflow: hidden;
@@ -156,7 +155,7 @@ h2 {
 .perks-cont {
   grid-column: span 12;
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(25dvw,1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 

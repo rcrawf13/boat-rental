@@ -1,4 +1,5 @@
 import cardSectionInfo from './carouselItems';
+import FadeDiv from '../../../fade_div/FadeDiv';
 import { ShowMore, type ShowMoreRef } from '@re-dev/react-truncate'
 import { useRef } from 'react';
 import './about.css'; 
@@ -7,7 +8,8 @@ const WideScreen = () => {
     const refs = useRef<(ShowMoreRef|null)[]>([]);
 
   return (
-          <div className="wideScreenContainer">
+      <FadeDiv>
+        <div className="wideScreenContainer">
         <div className="img-text-con">
           <div className="imgCon"></div>
           <div className="textElements">
@@ -40,6 +42,7 @@ const WideScreen = () => {
           })}
         </div>
       </div>
+      </FadeDiv>
   )
 }
 

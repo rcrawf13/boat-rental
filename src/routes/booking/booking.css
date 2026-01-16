@@ -1,3 +1,6 @@
+#root {
+    width: 100%;
+}
 .bookingContainer {
     display: flex;
     height: 100%;
@@ -21,6 +24,9 @@
 .bookingForm {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     /* background-color: rebeccapurple; */
 }
 
@@ -30,7 +36,8 @@
     height: 100%;
 }
 
-.name {
+.name, .contactFields {
     display: flex;
     gap: 1rem;
 }
+
