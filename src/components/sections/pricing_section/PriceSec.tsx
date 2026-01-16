@@ -1,5 +1,4 @@
 import { useState, } from 'react';
-import FadeDiv from '../../fade_div/FadeDiv';
 import PriceSecMobile from './PriceSecMobile';
 import PriceSecWide from './PriceSecWide';
 import './pricesec.css';
