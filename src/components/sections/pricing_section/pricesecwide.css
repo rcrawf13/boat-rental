@@ -1,19 +1,18 @@
 .priceWideScreenContainer {
-    width: 90%; max-width: 1600px;
+    max-width: 1600px;
     height: 80%;
-    top: 12%;
+    width: 90%;
     background-color: #FFFFFF;
     position: absolute;
     z-index: 2;
     border-radius: 15px;
-    display: grid;
+    display: none;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     align-items: center;
     justify-content: center;
     min-width: 0;
     box-sizing: border-box;
     box-shadow: var(--home-text-shadow);
-    visibility: hidden;
     box-sizing: border-box;
     padding: .8rem;
     font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -23,7 +22,7 @@
 
  @media  (min-width:600px) {
     .priceWideScreenContainer {
-        visibility: visible;
+        display: grid;
     }
  }
 

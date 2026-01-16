@@ -82,9 +82,10 @@ h2 {
 
 
 .wideScreenContainer {
-  margin-top: 3%;
   max-width: 1600px;
-  height: 85%;
+  height: 80%;
+  width: 90%;
+  top: 12%;
   overflow: hidden;
   background-color:#FFFFFF;
   border-radius: 15px;
@@ -223,4 +224,12 @@ h2 {
 .card > * {
     text-wrap: pretty;
 
+}
+
+
+@media (width <= 500px) {
+  #about > #fade {
+    display: none;
+  }
+  
 }

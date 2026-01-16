@@ -9,7 +9,7 @@ const [active,setActive] = useState<number>(2);
 
 
   return (
-    <FadeDiv>
+    <>
       <PriceSecMobile 
       currentPrice={currentPrice}
       active={active}
@@ -22,7 +22,7 @@ const [active,setActive] = useState<number>(2);
       setActive={setActive}
       setCurrentPrice={setCurrentPrice}
       />
-    </FadeDiv>
+    </>
 
   )
 }

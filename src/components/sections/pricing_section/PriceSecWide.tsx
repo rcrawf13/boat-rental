@@ -3,6 +3,7 @@ import DurationButtons from './DurationButtons';
 import { useEffect } from 'react';
 import { motion,useAnimate } from "motion/react";
 import BookingButton from '../../booking_button/BookingButton';
+import FadeDiv from '../../fade_div/FadeDiv';
 import './pricesecwide.css';
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
 type setActiveType = React.Dispatch<React.SetStateAction<number>>;
@@ -21,7 +22,8 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
   },[currentPrice]);
 
   return (
-    <div className="priceWideScreenContainer">
+    <FadeDiv>
+          <div className="priceWideScreenContainer">
         <div className="dynamicPricingSect">
         <h3>Pontoon Cruise</h3>
         <DurationButtons  setCurrentPrice={setCurrentPrice} active={active} setActive={setActive}/>
@@ -35,14 +37,11 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
             <li>Free Cancellations <small>(24hrs)</small></li>
           </ul>
         </div>
-
         <BookingButton variant={'filled'} />
         </div>
         <div className="vidCon">
             <div className="priceQuoteCont">
-
             </div>
-
             <div className="imgCon">
                   <div className="priceQuote">
                   <p>
@@ -57,6 +56,7 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
             </div>
         </div>
     </div>
+    </FadeDiv>
   )
 }
 
