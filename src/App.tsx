@@ -1,22 +1,22 @@
-import NavBar from './components/navbar/NavBar';
-import SectionBase from './components/SectionBase';
-import { Link, Element } from 'react-scroll';
-
+import Root from './routes/booking/Root';
+import Booking from './routes/booking/Booking';
+import { Routes, Route } from 'react-router';
+import ActivePriceContext from './context/ActivePriceContext';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const navButtonOptions: string[] = ["Home","About Us", "Pricing","Contact"];
+  const [active, setActive] = useState(2);
+  const [currentPrice,setCurrentPrice] = useState('$250.00');
 
   return (
     <>
-        <NavBar Link={Link} navButtonOptions={navButtonOptions} />
-
-          {navButtonOptions.map((navButtonOption)=>
-          <SectionBase
-          Element={Element}
-          key={navButtonOption} 
-          navButtonOption={navButtonOption} />)
-          }
+    <ActivePriceContext.Provider value={{active,setActive,currentPrice,setCurrentPrice}}>
+      <Routes>
+          <Route path='/' element={<Root/>}/>
+          <Route path='/booking' element={<Booking />}/>
+      </Routes>
+    </ActivePriceContext.Provider>
         
     </>
   )

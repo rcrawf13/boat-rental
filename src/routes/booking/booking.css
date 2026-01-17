@@ -40,4 +40,57 @@
     display: flex;
     gap: 1rem;
 }
+.bookingForm > .durCont {
+    align-items: start;
+    text-align: start;
+    max-width: 462px;
 
+
+}
+
+.bookingForm > .durCont > p {
+    align-self: self-start;
+    color: #2F6F66;
+    
+}
+
+.bookingForm > .durCont > .durationBtns {
+    /* max-width: 462px; */
+}
+.bookingForm > .durCont > .durationBtns > button {
+    /* max-width: 300px; */
+    min-height: 56px;
+}
+
+.bookingForm > .durCont > .durationBtns > #customTime {
+    min-width: 56px;
+    min-height: 56px;
+}
+
+
+.bookingForm > .durCont > .custDurCont {
+    justify-content: start;
+}
+
+.bookingForm > .durCont > .custDurCont {
+    justify-content: start;
+}
+.bookingForm > .durCont >  * *  {
+    min-height: 46px;
+}
+
+.bookingForm > .durCont > .custDurCont > div > div {
+    max-width: 462px;
+}
+
+.bookingForm > .durCont > .custDurCont > div > div > button, img {
+    min-width:64px ;
+    object-fit: contain;
+    padding: 0;
+}
+
+.bookingForm > .durCont > .custDurCont  input[id^="base-ui-_r_"] {
+    border: #2F6F66 solid 3px;
+    min-width: 325px;
+    height: 10px;
+}

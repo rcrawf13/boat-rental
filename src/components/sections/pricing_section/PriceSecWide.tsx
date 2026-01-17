@@ -4,18 +4,19 @@ import { useEffect } from 'react';
 import { motion,useAnimate } from "motion/react";
 import BookingButton from '../../booking_button/BookingButton';
 import FadeDiv from '../../fade_div/FadeDiv';
+import { useContext } from 'react';
+import ActivePriceContext from '../../../context/ActivePriceContext';
 import './pricesecwide.css';
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
-type setActiveType = React.Dispatch<React.SetStateAction<number>>;
 
 interface PriceSecWide {
   currentPrice:string;
-  active:number;
   setCurrentPrice:setCurrentPriceType
-  setActive:setActiveType
   
 }
-const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWide) => {
+const PriceSecWide = () => {
+
+  const {currentPrice} = useContext(ActivePriceContext)
   const [scope,animate] = useAnimate();
   useEffect(()=>{
     animate(scope.current,{ scale: [1,1.2],opacity:[0,1]},{ duration: 0.5 })
@@ -26,7 +27,7 @@ const PriceSecWide = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecWi
           <div className="priceWideScreenContainer">
         <div className="dynamicPricingSect">
         <h3>Pontoon Cruise</h3>
-        <DurationButtons  setCurrentPrice={setCurrentPrice} active={active} setActive={setActive}/>
+        <DurationButtons  />
         
         <div className="includedList">
           <h4>Whats Included</h4>

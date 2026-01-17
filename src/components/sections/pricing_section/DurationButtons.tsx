@@ -1,21 +1,25 @@
 import React, { useState, type Dispatch, type SetStateAction } from "react"
 import NumberComponent from "./NumberComponent";
-import { motion } from "motion/react"
-type setActiveType = Dispatch<SetStateAction<number>>;
-type setCurrentPriceType = Dispatch<SetStateAction<string>>;
-interface DurationButtonsProps  {
-  active:number;
-  setActive: setActiveType;
-  setCurrentPrice: setCurrentPriceType;
-}
-const DurationButtons = ({active,setActive,setCurrentPrice}:DurationButtonsProps) => {
-  const [open,setOpen] = useState<boolean>(true);
+import { useContext } from "react";
+import ActivePriceContext  from "../../../context/ActivePriceContext";
+import { motion } from "motion/react";
 
+interface ActiveContextType {
+  active:number;
+  setActive: Dispatch<SetStateAction<number>>;
+  setCurrentPrice?: Dispatch<SetStateAction<string>>;
+
+}
+
+const DurationButtons = () => {
+  const [open,setOpen] = useState<boolean>(true);
+  
   const handleChange = (e:Event):void => {
     const value = (e.target as HTMLInputElement).value;
     setActive(parseInt(value));
     updateCurrentPrice(parseInt(value));
   } 
+  const {active,setActive,setCurrentPrice}:ActiveContextType = useContext(ActivePriceContext);
 
   const updateCurrentPrice = (value:number | null ):void => {
 

@@ -1,19 +1,19 @@
 import pontonImg from './../../../assets/PontoonBoatBlr.webp';
 import DurationButtons from './DurationButtons';
 import BookingButton from '../../booking_button/BookingButton';
-import { useEffect } from 'react';
+import { useContext, useEffect, type SetStateAction } from 'react';
 import { motion, useAnimate } from "motion/react";
-type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
-type setActiveType = React.Dispatch<React.SetStateAction<number>>;
-interface PriceSecMobileProps {
-  currentPrice:string;
-  active:number;
-  setCurrentPrice:setCurrentPriceType;
-  setActive:setActiveType
+import ActivePriceContext from '../../../context/ActivePriceContext';
+import type { Dispatch } from 'react';
+
+interface ActiveContextTypes {
+  currentPrice?:string | undefined;
+  setCurrentPrice?: Dispatch<SetStateAction<string>>;
 }
 
-const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}:PriceSecMobileProps) => {
+const PriceSecMobile = () => {
   const [scope,animate] = useAnimate();
+  const {currentPrice}:ActiveContextTypes = useContext(ActivePriceContext);
   useEffect(()=>{
     animate(scope.current,{opacity:[0,1],scale:[0,1]},)
   },[currentPrice])
@@ -30,10 +30,7 @@ const PriceSecMobile = ({currentPrice,active,setCurrentPrice,setActive}:PriceSec
           </div>
           <img src={pontonImg} alt="" />
         </div>
-        <DurationButtons 
-        setCurrentPrice={setCurrentPrice} 
-        active={active} 
-        setActive={setActive}/>
+        <DurationButtons/>
         
         <div className="includedList">
           <h4>Whats Included</h4>

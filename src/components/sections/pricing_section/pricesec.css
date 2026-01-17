@@ -121,6 +121,7 @@
   color: #FFFFFF;
   height: 5dvh;
   width: 32dvw;
+  min-height: 32px;
   border: none;
 
 
@@ -132,6 +133,9 @@
   border-radius: 100%;
   width: 5dvh;
   height: 5dvh;
+  min-height: 32px;
+  min-width: 32px;
+  max-width: 32px;
   background-color: transparent;
   border: solid #2F6F66 2pt;
   background-image: url("/src/assets/add-icon.svg");
@@ -198,7 +202,7 @@ h4 {
 
 .durCont {
   font-family: inter;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
