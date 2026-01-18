@@ -75,8 +75,7 @@ const DurationButtons = () => {
       <>
         <div className="durCont">
           <p>Choose Your time on the water</p>
-          <NumberComponent 
-          updateCurrentPrice={updateCurrentPrice}/>
+          <NumberComponent updateCurrentPrice={updateCurrentPrice}/>
         </div>
       </>
     )}

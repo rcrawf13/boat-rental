@@ -27,12 +27,6 @@
 
 }
 
-.mobile-content-container > .priceQuoteCont > video {
-  max-height: clamp(20vh, 24vh, 165px);
-  aspect-ratio: 16/9;
-  border-radius: 15px;
-}
-
 
 #pricing {
   background-color: #2F6F66;
@@ -70,6 +64,10 @@
     font-weight:600;
     font-size: 1.5rem;
     margin: 0%;
+  }
+
+  .mobile-content-container > .priceQuoteCont > .durCont > .custDurCont {
+    max-width: 100%;
   }
 
   .priceQuote {
@@ -135,7 +133,6 @@
   height: 5dvh;
   min-height: 32px;
   min-width: 32px;
-  max-width: 32px;
   background-color: transparent;
   border: solid #2F6F66 2pt;
   background-image: url("/src/assets/add-icon.svg");
@@ -202,7 +199,7 @@ h4 {
 
 .durCont {
   font-family: inter;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -218,7 +215,6 @@ h4 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
   gap: .5rem;
 }
 
