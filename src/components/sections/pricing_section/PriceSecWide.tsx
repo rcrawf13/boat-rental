@@ -1,11 +1,7 @@
-import pontoonPic from './../../../assets/PontoonBoatBlr.webp'
 import DurationButtons from './DurationButtons';
-import { useEffect } from 'react';
-import { motion,useAnimate } from "motion/react";
 import BookingButton from '../../booking_button/BookingButton';
 import FadeDiv from '../../fade_div/FadeDiv';
-import { useContext } from 'react';
-import ActivePriceContext from '../../../context/ActivePriceContext';
+import ImageWideCont from '../../image_component/ImageWideCont';
 import './pricesecwide.css';
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
 
@@ -16,11 +12,7 @@ interface PriceSecWide {
 }
 const PriceSecWide = () => {
 
-  const {currentPrice} = useContext(ActivePriceContext)
-  const [scope,animate] = useAnimate();
-  useEffect(()=>{
-    animate(scope.current,{ scale: [1,1.2],opacity:[0,1]},{ duration: 0.5 })
-  },[currentPrice]);
+
 
   return (
     <FadeDiv>
@@ -40,22 +32,7 @@ const PriceSecWide = () => {
         </div>
         <BookingButton variant={'filled'} />
         </div>
-        <div className="vidCon">
-            <div className="priceQuoteCont">
-            </div>
-            <div className="imgCon">
-                  <div className="priceQuote">
-                  <p>
-                  <motion.span 
-                  ref={scope}
-                  >
-                    {currentPrice}
-                  </motion.span>
-                  </p>
-                </div>
-              <img src={pontoonPic} alt="" />
-            </div>
-        </div>
+        <ImageWideCont/>
     </div>
     </FadeDiv>
   )

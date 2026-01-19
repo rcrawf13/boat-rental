@@ -1,4 +1,4 @@
-import Root from './routes/booking/Root';
+import Root from './routes/root/Root';
 import Booking from './routes/booking/Booking';
 import { Routes, Route } from 'react-router';
 import ActivePriceContext from './context/ActivePriceContext';

@@ -1,3 +1,6 @@
+#root {
+    --bookFromMaxWidth: 462px
+}
 .bookingContainer {
     display: flex;
     height: 100%;
@@ -8,14 +11,16 @@
 
 .bookingContentContainer {
     background-color: #FFFF;
-    height: 90%;
+    color: #2F6F66;
+    height: auto;
     width: 90%;
+    height: fit-content;
     border-radius:15px;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(50%,1fr));
     box-sizing: border-box;
     padding: 1rem;
-
+    max-width: 1600px;
 }
 
 .bookingForm {
@@ -23,6 +28,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -39,7 +46,7 @@
 .bookingForm > .durCont {
     align-items: start;
     text-align: start;
-    max-width: 462px;
+    max-width: var(--bookFromMaxWidth);
 }
 
 .bookingForm > .durCont > .durationBtns > button {
@@ -64,7 +71,7 @@
 }
 
 .bookingContentContainer > .bookingForm > .durCont > .custDurCont > div > div {
-    max-width: 462px;
+    max-width: var(--bookFromMaxWidth);
 }
 
 .bookingContentContainer >.bookingForm > .durCont > .custDurCont > div > div > button > img {
@@ -76,6 +83,32 @@
 
 .bookingForm > .durCont > .custDurCont  input[id^="base-ui-_r_"] {
     border: #2F6F66 solid 3px;
-    min-width: 325px;
+    min-width: 315px;
     height: 10px;
+}
+
+.dateTimeInputs {
+    background-color: #2F6F66;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    justify-content: center;
+    color: #FFFFFF;
+}
+.dateTimeInputs > div[class^="MuiPickersLayout-root"] * {
+    color: #FFFFFF;
+}
+
+.dateTimeInputs  button[role="gridcell"] {
+    border-color: #FFFFFF;
+}
+.dateTimeInputs div[class$="MuiDateCalendar-root"] button[aria-selected="true"]{
+    color: #2F6F66;
+    background-color: #FFFFFF;
+}
+
+
+.bookingContentContainer .imgCon,.imgPriceCon {
+    height: fit-content;
+    width: var(--bookFromMaxWidth);
 }

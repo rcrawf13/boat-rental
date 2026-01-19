@@ -14,10 +14,6 @@
   box-shadow: var(--home-text-shadow);
 }
 
-.priceQuoteCont {
-  position: relative;
-
-}
 
 .mobile-content-container > .priceQuoteCont >img {
   height: 30dvh;
@@ -70,39 +66,7 @@
     max-width: 100%;
   }
 
-  .priceQuote {
-    background-color: #FFFFFF;
-    border-radius: 100px;
-    height: fit-content;
-    width: 30%;
-    height: 2rem;
-    font-family: "Inter", sans-serif;
-    position: absolute;
-    margin: .5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--home-text-shadow);
 
-  font-family: "Roboto Serif", serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "GRAD" 0;
-
-  }
-
-  .priceQuote > p {
-    margin: 0;
-    padding: .15rem;
-    font-size: 1.25rem;
-    text-align: center;
-    font-weight: 400;
-
-
-  }
 
 
 .durationBtns {

@@ -133,7 +133,7 @@ h2 {
   grid-template-columns: 2fr 1fr;
 
 }
-.imgCon {
+.wideScreenContainer > .img-text-con > .imgCon {
   background-image: url("../../../../assets/pontoon.jpg");
   background-repeat: no-repeat;
   background-size:  cover;
