@@ -1,13 +1,15 @@
-import React, { useState, type Dispatch, type SetStateAction } from "react"
+import React, { useState, type Dispatch, type SetStateAction } from "react";
 import NumberComponent from "./NumberComponent";
 import { useContext } from "react";
 import ActivePriceContext  from "../../../context/ActivePriceContext";
 import { motion } from "motion/react";
+import type { Dayjs } from "dayjs";
 
 interface ActiveContextType {
   active:number;
   setActive: Dispatch<SetStateAction<number>>;
   setCurrentPrice?: Dispatch<SetStateAction<string>>;
+  selectedDayJSObj:Dayjs;
 
 }
 
@@ -20,24 +22,21 @@ const DurationButtons = () => {
     updateCurrentPrice(parseInt(value));
   } 
   const {active,setActive,setCurrentPrice}:ActiveContextType = useContext(ActivePriceContext);
-
   const updateCurrentPrice = (value:number | null ):void => {
+      if(value && value > 1 ) {
+        const additionalHours:number = value - 4;
+        const priceAdditional:number = 400.00 + additionalHours * 75;
+        setCurrentPrice(`$${priceAdditional}.00`);
+      }    
+    }
+    const handleOpen = ():void => {
+      setOpen(!open);
+    }
+    
 
-    if(value && value > 1 ) {
-      const additionalHours:number = value - 4;
-      const priceAdditional:number = 400.00 + additionalHours * 75;
-      setCurrentPrice(`$${priceAdditional}.00`);
-    }    
-  }
 
-  const handleOpen = ():void => {
-    setOpen(!open);
-  }
-
-
-  return (
+    return (
     <>
-
         {open?(    
     <div className="durCont">
     <p>Choose Your time on the water</p>
@@ -82,6 +81,11 @@ const DurationButtons = () => {
     
     </>
   )
+    
+
+
+
+
 }
 
 export default DurationButtons

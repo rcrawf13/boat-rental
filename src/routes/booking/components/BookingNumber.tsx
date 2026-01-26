@@ -2,6 +2,8 @@ import { NumberField } from '@base-ui/react/number-field';
 import cirlePlus from "./../../../assets/circle-add.svg";
 import cirleMinus from "./../../../assets/circle-minus.svg";
 import { motion } from "motion/react";
+import { useContext } from 'react';
+import NumberValueContext from '../../../context/numberValueContext';
 type updateCurrentPriceFnType = (value: null | number) => void;
 interface NumberComponentProps {
     updateCurrentPrice:updateCurrentPriceFnType;
@@ -9,22 +11,23 @@ interface NumberComponentProps {
 
 }
 
-const NumberComponent = ({totalAvailableBookingTime,updateCurrentPrice}:NumberComponentProps) => {
-
+const BookingNumber = ({totalAvailableBookingTime,updateCurrentPrice}:NumberComponentProps) => {
+    const {numberValue,setNumberValue} = useContext(NumberValueContext);
     return (
         <>
             <div className="custDurCont">
             
-                <NumberField.Root                 
+                <NumberField.Root
+                    value={numberValue}                 
                     onValueChange={(e)=>{
-                    
+                    // setNumberValue
                     if(e) {
+                        // numberValue is defaulted to 2 when the StaticDateTime Picker component is updated
+                        // It is done to reset the num component when the max={} value is lowered because of availability
+                        setNumberValue(e)
                         updateCurrentPrice(e)
                     }
                     // console.log(e)
-                    // Could have state update the value by
-                    // doing a truthy check on bool
-                    // Checks if state was updated from calendar component
 
                 }} step={1} defaultValue={2} min={2} max={totalAvailableBookingTime??8}  >
                 <NumberField.ScrubArea>
@@ -56,4 +59,4 @@ const NumberComponent = ({totalAvailableBookingTime,updateCurrentPrice}:NumberCo
     
     
 
-export default NumberComponent 
+export default BookingNumber 

@@ -107,8 +107,13 @@
     background-color: #FFFFFF;
 }
 
+.dateTimeInputs span[class$="-indicator"] {
+    background-color: #FFFFFF;
+}
 
 .bookingContentContainer .imgCon,.imgPriceCon {
     height: fit-content;
     width: var(--bookFromMaxWidth);
 }
+
+
