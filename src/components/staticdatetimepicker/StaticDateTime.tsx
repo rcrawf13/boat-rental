@@ -4,13 +4,15 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useContext } from "react";
 import ActivePriceContext from "../../context/ActivePriceContext";
 import APIResContext from "../../context/APIResContext";
-import NumberValueContext from "../../context/numberValueContext";
-// import type { Dayjs } from "dayjs";
+import NumberValueContext from "../../context/NumberValueContext";
+import type { Dayjs } from "dayjs";
+import type { TimeView } from "@mui/x-date-pickers/models";
+
 const StaticDateTime = () => {
     const APIRes = useContext(APIResContext);
     const {selectedDayJSObj,setSelectedDayJSObj,setActive} = useContext(ActivePriceContext);
-    const {numberValue,setNumberValue} = useContext(NumberValueContext);
-    const shouldDisableTime = (timeValue, view) => {
+    const {setNumberValue} = useContext(NumberValueContext);
+    const shouldDisableTime = (timeValue:Dayjs, view:TimeView) => {
     const hour = timeValue.hour();
     const min = timeValue.minute();
     const day = selectedDayJSObj.day();

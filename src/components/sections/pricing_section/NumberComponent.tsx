@@ -4,8 +4,8 @@ import cirleMinus from "./../../../assets/circle-minus.svg";
 import { motion } from "motion/react";
 type updateCurrentPriceFnType = (value: null | number) => void;
 interface NumberComponentProps {
-    updateCurrentPrice:updateCurrentPriceFnType;
-    totalAvailableBookingTime:number;
+    updateCurrentPrice:updateCurrentPriceFnType,
+    totalAvailableBookingTime?:number,
 
 }
 

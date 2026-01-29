@@ -1,5 +1,12 @@
-#root {
-    --bookFromMaxWidth: 462px
+.container {
+    position: relative;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
 }
 .bookingContainer {
     display: flex;
@@ -12,19 +19,22 @@
 .bookingContentContainer {
     background-color: #FFFF;
     color: #2F6F66;
-    height: auto;
-    width: 90%;
+    width: fit-content;
     height: fit-content;
     border-radius:15px;
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(50%,1fr));
+    /* grid-template-columns: repeat(auto-fill,minmax(50%,1fr)); */
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
     box-sizing: border-box;
     padding: 1rem;
     max-width: 1600px;
+    align-items: center;
+    justify-content: center;
 }
 
 .bookingForm {
-    width: 100%;
+    max-width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -33,10 +43,7 @@
     gap: 1rem;
 }
 
-.visual {
-    width: 100%;
-    height: 100%;
-}
+
 
 .name, .contactFields {
     display: flex;
@@ -46,7 +53,7 @@
 .bookingForm > .durCont {
     align-items: start;
     text-align: start;
-    max-width: var(--bookFromMaxWidth);
+    max-width: 462px;
 }
 
 .bookingForm > .durCont > .durationBtns > button {
@@ -71,7 +78,7 @@
 }
 
 .bookingContentContainer > .bookingForm > .durCont > .custDurCont > div > div {
-    max-width: var(--bookFromMaxWidth);
+    max-width: 462px;
 }
 
 .bookingContentContainer >.bookingForm > .durCont > .custDurCont > div > div > button > img {
@@ -111,9 +118,8 @@
     background-color: #FFFFFF;
 }
 
-.bookingContentContainer .imgCon,.imgPriceCon {
+.bookingContainer .bookingContentContainer .imgCon,.imgPriceCon {
     height: fit-content;
-    width: var(--bookFromMaxWidth);
+    width: 100% ;
 }
-
 

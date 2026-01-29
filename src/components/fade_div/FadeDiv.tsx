@@ -5,7 +5,8 @@ import './fade-div.css'
 interface Props {
    children:ReactNode; 
 }
-const FadeDiv:React.FunctionComponent<Props> = ({children}) => {
+const FadeDiv:React.FunctionComponent<Props> = ({children }) => {
+    
   return (
     <motion.div
     id="fade"

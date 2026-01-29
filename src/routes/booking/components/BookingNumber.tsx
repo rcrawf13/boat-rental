@@ -3,7 +3,7 @@ import cirlePlus from "./../../../assets/circle-add.svg";
 import cirleMinus from "./../../../assets/circle-minus.svg";
 import { motion } from "motion/react";
 import { useContext } from 'react';
-import NumberValueContext from '../../../context/numberValueContext';
+import NumberValueContext from '../../../context/NumberValueContext';
 type updateCurrentPriceFnType = (value: null | number) => void;
 interface NumberComponentProps {
     updateCurrentPrice:updateCurrentPriceFnType;

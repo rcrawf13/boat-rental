@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import APIResContext from '../../context/APIResContext';
-import NumberValueContext from '../../context/numberValueContext';
+import NumberValueContext from '../../context/NumberValueContext';
 
 import type { APIResponse } from '../../context/contexts_types/APIRes';
 
@@ -34,15 +34,17 @@ const Booking = () => {
 
   if(fakeAPIRes){
   return (
-    <div className="container" style={{width:'100%',height:'100%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',position:'relative'}}>
+    <>
       <Fab 
       onClick={handleClick}
       sx={{position:'absolute',top:'1rem', left:'1rem'}}>
         <ChevronLeftIcon/>
       </Fab>
+    <div className="container" >
+
 
       <APIResContext.Provider value={fakeAPIRes}>
-      <FadeDiv>
+      <FadeDiv >
         <div className="bookingContainer">
             <div className="bookingContentContainer">
               <NumberValueContext.Provider value={{numberValue,setNumberValue}}>
@@ -54,6 +56,7 @@ const Booking = () => {
       </FadeDiv>  
       </APIResContext.Provider>
     </div>
+    </>
 )
   } else {
       return (
