@@ -13,6 +13,8 @@
     position: relative;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .imgPriceCon > .imgCon > .priceQuote {
     background-color: #FFFFFF;
@@ -55,8 +57,8 @@
 #boatImg {
     object-fit: cover;
     object-position: center;
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 50%;
     display: block;
     border-radius: 15px;
 }

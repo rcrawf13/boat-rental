@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import APIResContext from '../../context/APIResContext';
 import NumberValueContext from '../../context/NumberValueContext';
-
 import type { APIResponse } from '../../context/contexts_types/APIRes';
 
 const Booking = () => {
@@ -23,14 +22,30 @@ const Booking = () => {
 
   useEffect(()=>{
     setTimeout(()=>{
+      // Standard Days - set
+      const standardWeekday = {startHour:17, endHour: 22, isOpen: true};
+      const standardWeekend = { startHour: 10, endHour: 20, isOpen: true };
+
+      // 7-day array - Using the array 0-6 as days of the week
+      const weeklySchedule = [
+        standardWeekend, // SUN (0)
+        standardWeekday, // MON (1)
+        standardWeekday, // TUE (2)
+        standardWeekday, // WED (3)
+        standardWeekday, // THU (4)
+        standardWeekday, // FRI (5)
+        standardWeekend, // SAT (6)
+      ];
       setfakeAPIRes({
-        weekDayAvailability:{
-          startTime:17,
-          endTime:22
-        }
+        schedule: weeklySchedule,
+        bookedSlots:[]
+
       })
-    },1500)
-  },[])
+
+
+      },1500)
+      },[])
+  
 
   if(fakeAPIRes){
   return (
@@ -46,12 +61,10 @@ const Booking = () => {
       <APIResContext.Provider value={fakeAPIRes}>
       <FadeDiv >
         <div className="bookingContainer">
-            <div className="bookingContentContainer">
               <NumberValueContext.Provider value={{numberValue,setNumberValue}}>
-                <StaticDateTime  />
-                <BookingForm />
+                  <StaticDateTime/>
+                  <BookingForm />
               </NumberValueContext.Provider>
-            </div>
         </div>
       </FadeDiv>  
       </APIResContext.Provider>

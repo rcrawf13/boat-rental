@@ -5,7 +5,7 @@ const cardSectionInfo = [
     {
     title:  `Exclusively on \n Lake Norman`,
     paragraph:
-                `Your on the water experience happens right her only on Lake Norman.\n 
+                `Your on the water experience happens right here only on Lake Norman.\n 
                 We operate solely on Charlotte’s premier lake, giving you a dedicated,
                 local experience every time. No extra locations, no confusion just smooth,
                 reliable fun on the water where it matters most.`,

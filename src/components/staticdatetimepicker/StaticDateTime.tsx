@@ -4,64 +4,87 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useContext } from "react";
 import ActivePriceContext from "../../context/ActivePriceContext";
 import APIResContext from "../../context/APIResContext";
-import NumberValueContext from "../../context/NumberValueContext";
+import { useRef } from "react";
 import type { Dayjs } from "dayjs";
 import type { TimeView } from "@mui/x-date-pickers/models";
+import dayjs from "dayjs";
 
 const StaticDateTime = () => {
+    const prevHourRef = useRef<null|number>(null);
     const APIRes = useContext(APIResContext);
-    const {selectedDayJSObj,setSelectedDayJSObj,setActive} = useContext(ActivePriceContext);
-    const {setNumberValue} = useContext(NumberValueContext);
-    const shouldDisableTime = (timeValue:Dayjs, view:TimeView) => {
-    const hour = timeValue.hour();
-    const min = timeValue.minute();
-    const day = selectedDayJSObj.day();
-    const isWeekday = day > 0 && day <= 5;
-    const availabilityStartTime = APIRes.weekDayAvailability.startTime;
-    const availabilityEndTime = APIRes.weekDayAvailability.endTime;
+    const {selectedDayJSObj,setSelectedDayJSObj} = useContext(ActivePriceContext);
 
+    // Function for determining if a time should be disabled based on API Response
+const shouldDisableTime = (timeValue: Dayjs, view: TimeView) => {
+    // 1. Basic Setup
+    const dayIndex = timeValue.day();
+    const dailyRule = APIRes.schedule[dayIndex];
+    if (!dailyRule || !dailyRule.isOpen) return true; // Closed today
 
-    // If Selected Day is a Weekday
-    if (isWeekday) {
-        // Disable hours before 5PM or after 8PM
-        if(view === 'hours') {
-        return hour < availabilityStartTime || hour > availabilityEndTime - 2
-        }
-        // If selected hour == to 5PM bl
-        if(view === 'minutes') {
-            if(hour == availabilityStartTime) {
-                // Block minute options less than 30
-                return min < 30
-            }
-        }
-    }
-    // If Day is a Weekend
-    if(!isWeekday) {
-        if(view === 'hours') {
-        return (hour < 10 || hour > 17 )
-        }
+    // 2. Validate Opening Hours (The "-2" Logic)
+    // We assume the MINIMUM duration is 2 hours for a start time to be valid
+    const minDuration = 2;
+    const isTooEarly = timeValue.hour() < dailyRule.startHour;
+    const isTooLate  = timeValue.hour() > (dailyRule.endHour - minDuration);
+
+    if (view === 'hours' && (isTooEarly || isTooLate)) {
+        return true;
     }
 
-    return false
-    
+    if(view === 'minutes') {
+        return timeValue.minute() < 30 && timeValue.hour() === 17;
+    }
 
+    // 3. Validate Collision with Existing Bookings
+    // We check if a theoretical 2-hour appointment starting here would hit a wall.
+    const proposedStart = timeValue;
+    const proposedEnd = timeValue.add(minDuration, 'hour');
 
-    };
+    const hasCollision = APIRes.bookedSlots.some((booking) => {
+        const bookStart = dayjs(booking.start);
+        const bookEnd = dayjs(booking.end);
+
+        // Simple Overlap Check: (StartA < EndB) and (EndA > StartB)
+        return proposedStart.isBefore(bookEnd) && proposedEnd.isAfter(bookStart);
+    });
+
+    if (view === 'hours' && hasCollision) {
+        return true;
+    }
+
+    return false;
+};
 
     return (
                 <div className="dateTimeInputs">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <StaticDateTimePicker 
                         sx={{backgroundColor:'transparent', justifySelf:'center'}} 
-                        defaultValue={selectedDayJSObj}
+                        localeText={{
+                            dateTimePickerToolbarTitle: 'Select Day & Start Time',
+                        }as any}
                         disablePast={true}
-                        onChange={(e)=>{
-                            if(e) {
-                            setSelectedDayJSObj(e)
-                            setActive(2);
-                            // console.log(e)
-                            setNumberValue(2);
+                        value={selectedDayJSObj}
+                        onChange={(e) => {
+                            if (!e) return;
+
+                            const hour = e.hour();
+                            // useRef keeps track of the previous Hour so we don't fight mui component
+                            const prevHour = prevHourRef.current;
+
+                            let newValue = e;
+
+                            // Only run when hour changes
+                            if (hour !== prevHour) {
+                                if (hour === 17) {
+                                    newValue = e.minute(30);
+                                } else if (hour > 17) {
+                                    newValue = e.minute(0);
+                                }
                             }
+
+                            prevHourRef.current = hour;
+                            setSelectedDayJSObj(newValue);
                         }}
                         shouldDisableTime={shouldDisableTime}
                         />

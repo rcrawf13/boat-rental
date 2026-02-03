@@ -1,9 +1,20 @@
 import { createContext } from "react";
 import type { APIResponse } from "./contexts_types/APIRes";
 
+    const standardWeekday = {startHour:17, endHour: 22, isOpen: true};
+    const standardWeekend = { startHour: 10, endHour: 20, isOpen: true };
+
 const APIResContext = createContext<APIResponse>({
-    weekDayAvailability:{startTime:0,endTime:0},
-    weekendAvailability:{startTime:0,endTime:0}
+    schedule:[
+        standardWeekend,
+        standardWeekday,
+        standardWeekday,
+        standardWeekday,
+        standardWeekday,
+        standardWeekday,
+        standardWeekend
+    ],
+    bookedSlots:[],
 
 });
 

@@ -1,12 +1,13 @@
 import TextField from "@mui/material/TextField";
 import BookingButton from "../../../components/booking_button/BookingButton";
-import ImageWideCont from "../../../components/image_component/ImageWideCont";
 import APIDurationComponents from "./APIDurationComponents";
+import ImgPriceComp from "./ImgPriceComp";
 
 const BookingForm = () => {
     return (
             <div className="bookingForm">
-                <ImageWideCont/>
+                {/* <ImageWideCont/> */}
+                <ImgPriceComp/>
                 <APIDurationComponents/>
                     <div className="name">
                         <TextField

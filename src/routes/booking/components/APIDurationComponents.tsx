@@ -1,189 +1,135 @@
-import {motion} from 'motion/react';
-import { useContext } from 'react';
+import { motion } from 'motion/react';
+import { useContext, useState } from 'react';
+import dayjs, { Dayjs } from 'dayjs';
 import ActivePriceContext from '../../../context/ActivePriceContext';
 import APIResContext from '../../../context/APIResContext';
-import { useState } from 'react';
-import type{ Dispatch, SetStateAction } from 'react';
-import type { Dayjs } from 'dayjs';
 import BookingNumber from './BookingNumber';
 
-
+// Define types clearly
 interface ActiveContextType {
-  active?:number;
-  setActive?: Dispatch<SetStateAction<number>>;
-  setCurrentPrice?: Dispatch<SetStateAction<string>>;
-  selectedDayJSObj?:Dayjs;
+  active?: number;
+  setActive?: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentPrice: React.Dispatch<React.SetStateAction<string>>;
+  selectedDayJSObj?: Dayjs;
 }
 
 const APIDurationComponents = () => {
-  const {selectedDayJSObj,active,setActive,setCurrentPrice}:ActiveContextType = useContext(ActivePriceContext);
-  const handleChange = (e:Event):void => {
-    const value = (e.target as HTMLInputElement).value;
-    setActive(parseInt(value));
-    updateCurrentPrice(parseInt(value));
-  } 
+  const { selectedDayJSObj, active, setActive, setCurrentPrice } = useContext(ActivePriceContext) as ActiveContextType;
+  const apiRes = useContext(APIResContext);
+  const [open, setOpen] = useState<boolean>(true);
+
+  // 1. Calculate the REAL available time (Closing vs. Next Booking)
+  const calculateMaxDuration = (): number => {
+    if (!selectedDayJSObj || !apiRes) return 0;
+
+    const dayIndex = selectedDayJSObj.day();
+    const dailyRule = apiRes.schedule[dayIndex];
+
+    // Safety: If shop is closed or data missing
+    if (!dailyRule || !dailyRule.isOpen) return 0;
+
+    const startHour = selectedDayJSObj.hour();
+    const closeHour = dailyRule.endHour;
+    
+    // A. Time until closing
+    let maxDuration = closeHour - startHour;
+
+    // B. Check for collision with the NEXT booking
+    const currentSlotStart = selectedDayJSObj;
+    
+    // Sort bookings just in case
+    const sortedBookings = [...apiRes.bookedSlots].sort((a, b) => 
+      new Date(a.start).getTime() - new Date(b.start).getTime()
+    );
+
+    for (const booking of sortedBookings) {
+      const bookingStart = dayjs(booking.start);
+      // If there is a booking AFTER our start time...
+      if (bookingStart.isAfter(currentSlotStart)) {
+        const hoursUntilBooking = bookingStart.diff(currentSlotStart, 'hour');
+        
+        // ...and it's sooner than closing time, that's our new limit.
+        if (hoursUntilBooking < maxDuration) {
+          maxDuration = hoursUntilBooking;
+        }
+        break; // We hit the first wall, stop checking.
+      }
+    }
+
+    return maxDuration;
+  };
+
+  const maxDuration = calculateMaxDuration();
+
+  const handleChange = (val: number): void => {
+    if (setActive) setActive(val);
+    updateCurrentPrice(val);
+  };
+
   const updateCurrentPrice = (value:number | null ):void => {
-      if(value && value > 1 ) {
+      if(value ) {
         const additionalHours:number = value - 4;
         const priceAdditional:number = 400.00 + additionalHours * 75;
         setCurrentPrice(`$${priceAdditional}.00`);
       }    
     }
-  const [open,setOpen] = useState<boolean>(true);
 
-  const handleOpen = ():void => {
+  const handleOpen = (): void => {
     setOpen(!open);
-    }
+  };
 
+  // If less than 2 hours available, don't show booking options
+  if (maxDuration < 2) return null; 
 
-
-    const day = selectedDayJSObj.day();
-    const isWeekday =  day > 0 && day <= 5;
-    const apiRes = useContext(APIResContext);
-    if(isWeekday && apiRes && selectedDayJSObj) {
-            // {console.log('API Component Mounted')}
-            {console.log(selectedDayJSObj.hour())}
-      // if It is weekday get start & end time availability
-      // Find the diff between End and Start to calculate duration
-      const endTime = apiRes.weekDayAvailability.endTime;
-      const totalAvailableBookingTime =  endTime - selectedDayJSObj.hour();
-      // console.log(totalAvailableBookingTime);
-      if(totalAvailableBookingTime >= 2 && totalAvailableBookingTime >= 4) {
-        // Return 2, 4 & + buttons
-        return(
-              <>
-        {open?(    
+  return (
     <div className="durCont">
-    <p>Choose Your time on the water</p>
-      <div className="durationBtns">
-        <motion.button
-        whileHover={{cursor:'pointer'}}
-        initial={{scale:1}}
-        whileTap={{scale:.95}}
-        style={active == 2 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66",transformOrigin:'center'}} 
-        value={2} 
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}
-        >2 Hrs</motion.button>
-
-        <motion.button
-        whileHover={{cursor:'pointer'}}         
-        initial={{scale:1}}
-        whileTap={{scale:.95}}
-        style={active == 4 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66",transformOrigin:'center'}} value={4} 
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}>4 Hrs
-        </motion.button>
-
-        <motion.button 
-        whileHover={{cursor:'pointer'}}
-        initial={{scale:1}}
-        whileTap={{scale:.95}}
-        style={{transformOrigin:'center'}}
-        id="customTime" 
-        onClick={handleOpen}></motion.button>
-      </div>
-    </div>)
-    
-    :
-    
-    (
-      <>
-        <div className="durCont">
-          <p>Choose Your time on the water</p>
-          <BookingNumber totalAvailableBookingTime={totalAvailableBookingTime} updateCurrentPrice={updateCurrentPrice}/>
-        </div>
-      </>
-    )}
-    
-    </>
-        )
-      } 
+      <p>Choose Your time on the water</p>
       
-      else {
-        if(totalAvailableBookingTime > 2 && totalAvailableBookingTime <= 3) {
-          // Return only 2 button
-        return(
-              <>
-        {open?(    
-    <div className="durCont">
-    <p>Choose Your time on the water</p>
-      <div className="durationBtns">
-        <motion.button
-        whileHover={{cursor:'pointer'}}
-        initial={{scale:1}}
-        whileTap={{scale:.95}}
-        style={active == 2 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66",transformOrigin:'center'}} 
-        value={2} 
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}
-        >2 Hrs</motion.button>
+      {open ? (
+        <div className="durationBtns">
+          {/* Always show 2 Hrs (since maxDuration >= 2) */}
+          <motion.button
+            whileHover={{ cursor: 'pointer' }}
+            initial={{ scale: 1 }}
+            whileTap={{ scale: 0.95 }}
+            style={active === 2 ? { backgroundColor: "#2F6F66" } : { backgroundColor: "transparent", border: "solid #2F6F66 2pt", color: "#2F6F66", transformOrigin: 'center' }}
+            onClick={() => handleChange(2)}
+          >
+            2 Hrs
+          </motion.button>
 
+          {/* Only show 4 Hrs if we have space */}
+          {maxDuration >= 4 && (
+            <motion.button
+              whileHover={{ cursor: 'pointer' }}
+              initial={{ scale: 1 }}
+              whileTap={{ scale: 0.95 }}
+              style={active === 4 ? { backgroundColor: "#2F6F66" } : { backgroundColor: "transparent", border: "solid #2F6F66 2pt", color: "#2F6F66", transformOrigin: 'center' }}
+              onClick={() => handleChange(4)}
+            >
+              4 Hrs
+            </motion.button>
+          )}
 
-        <motion.button 
-        whileHover={{cursor:'pointer'}}
-        initial={{scale:1}}
-        whileTap={{scale:.95}}
-        style={{transformOrigin:'center'}}
-        id="customTime" 
-        onClick={handleOpen}></motion.button>
-      </div>
-    </div>)
-    
-    :
-    
-    (
-      <>
-        <div className="durCont">
-          <p>Choose Your time on the water</p>
-          <BookingNumber totalAvailableBookingTime={totalAvailableBookingTime} updateCurrentPrice={updateCurrentPrice}/>
+          {/* Custom Button - Logic to show input */}
+          <motion.button
+            whileHover={{ cursor: 'pointer' }}
+            initial={{ scale: 1 }}
+            whileTap={{ scale: 0.95 }}
+            style={{ transformOrigin: 'center' }}
+            id="customTime"
+            onClick={handleOpen}
+          />
         </div>
-      </>
-    )}
-    
-    </>
-        )
-        }
-        
-        } if (totalAvailableBookingTime % 2 == 0) {
-        return(
-              <>
-        {open?(    
-    <div className="durCont">
-    <p>Choose Your time on the water</p>
-      <div className="durationBtns">
-        <motion.button
-        whileHover={{cursor:'pointer'}}
-        initial={{scale:1}}
-        whileTap={{scale:.95}}
-        style={active == 2 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66",transformOrigin:'center'}} 
-        value={2} 
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}
-        >2 Hrs</motion.button>
-
-      </div>
-    </div>)
-    
-    :
-    
-    (
-    <div className="durCont">
-    <p>Choose Your time on the water</p>
-      <div className="durationBtns">
-        <motion.button
-        whileHover={{cursor:'pointer'}}
-        initial={{scale:1}}
-        whileTap={{scale:.95}}
-        style={active == 2 ? {"backgroundColor":"#2F6F66"}:{"backgroundColor":"transparent","border":"solid #2F6F66 2pt", "color":"#2F6F66",transformOrigin:'center'}} 
-        value={2} 
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>handleChange(e.nativeEvent)}
-        >2 Hrs</motion.button>
-
-      </div>
+      ) : (
+        /* Custom Input View */
+        <BookingNumber 
+           totalAvailableBookingTime={maxDuration} 
+           updateCurrentPrice={updateCurrentPrice} 
+        />
+      )}
     </div>
-    )}
-    
-    </>
-        )
-        }
-    }
-}
+  );
+};
 
-export default APIDurationComponents
+export default APIDurationComponents;
