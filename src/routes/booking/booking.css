@@ -29,6 +29,26 @@
     .bookingContainer {
         display: none;
     }
+     #fade, .container {
+        display: none;
+    }
+
+
+}
+
+
+.mobileBookingContainer {
+    display: flex;
+    align-items: center; justify-content: center;
+    flex-direction: column;
+    height: 100dvh;
+    padding: 0 1rem 1rem 1rem;
+    box-sizing: border-box;
+}
+@media(width > 880px) {
+    .mobileBookingContainer{
+        display: none;
+    }
 }
 
 

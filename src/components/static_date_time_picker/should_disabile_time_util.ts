@@ -1,21 +1,11 @@
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
-import { StaticDateTimePicker } from "@mui/x-date-pickers/StaticDateTimePicker"
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useContext } from "react";
-import ActivePriceContext from "../../context/ActivePriceContext";
-import APIResContext from "../../context/APIResContext";
-import { useRef } from "react";
 import type { Dayjs } from "dayjs";
 import type { TimeView } from "@mui/x-date-pickers/models";
+import type { APIResponse } from "../../context/contexts_types/APIRes";
 import dayjs from "dayjs";
 
-const StaticDateTime = () => {
-    const prevHourRef = useRef<null|number>(null);
-    const APIRes = useContext(APIResContext);
-    const {selectedDayJSObj,setSelectedDayJSObj} = useContext(ActivePriceContext);
 
-    // Function for determining if a time should be disabled based on API Response
-const shouldDisableTime = (timeValue: Dayjs, view: TimeView) => {
+// Function for determining if a time should be disabled based on API Response
+export const shouldDisableTime = (timeValue: Dayjs, view: TimeView, APIRes:APIResponse) => {
     // 1. Basic Setup
     const dayIndex = timeValue.day();
     const dailyRule = APIRes.schedule[dayIndex];
@@ -66,17 +56,11 @@ const shouldDisableTime = (timeValue: Dayjs, view: TimeView) => {
     return false;
 };
 
-    return (
-                <div className="dateTimeInputs">
-                    <LocalizationProvider dateAdapter={AdapterDayjs} >
-                        <StaticDateTimePicker 
-                        sx={{backgroundColor:'transparent', justifySelf:'center'}} 
-                        localeText={{
-                            dateTimePickerToolbarTitle: 'Select Day & Start Time',
-                        }as any}
-                        disablePast={true}
-                        value={selectedDayJSObj}
-                        onChange={(e) => {
+
+
+import type { PickerValue } from "@mui/x-date-pickers/internals";
+
+export const handleChange = (e:PickerValue,prevHourRef:React.RefObject<number | null>,setSelectedDayJSObj:React.Dispatch<React.SetStateAction<dayjs.Dayjs>>) => {
                             if (!e) return;
 
                             const hour = e.hour();
@@ -96,12 +80,4 @@ const shouldDisableTime = (timeValue: Dayjs, view: TimeView) => {
 
                             prevHourRef.current = hour;
                             setSelectedDayJSObj(newValue);
-                        }}
-                        shouldDisableTime={shouldDisableTime}
-                        />
-                    </LocalizationProvider>
-                </div>
-    )
-}
-
-export default StaticDateTime
+                        }
