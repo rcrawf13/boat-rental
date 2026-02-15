@@ -8,7 +8,7 @@
 .contactWideScreenContain {
     color: #3A745C;
     width: 90%; max-width: 1600px;
-    height: auto;
+    height: auto; min-height: 60dvh;
     top: 6.5%;
     background-color: #FFFFFF;
     position: absolute;
