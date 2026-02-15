@@ -3,13 +3,13 @@ import FadeDiv from '../../components/fade_div/FadeDiv';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import StaticDateTime from '../../components/staticdatetimepicker/StaticDateTime';
 import Fab from '@mui/material/Fab';
-import './booking.css';
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import APIResContext from '../../context/APIResContext';
 import NumberValueContext from '../../context/NumberValueContext';
 import type { APIResponse } from '../../context/contexts_types/APIRes';
+import './booking.css';
 
 const Booking = () => {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ const Booking = () => {
   useEffect(()=>{
     setTimeout(()=>{
       // Standard Days - set
-      const standardWeekday = {startHour:17, endHour: 22, isOpen: true};
-      const standardWeekend = { startHour: 10, endHour: 20, isOpen: true };
+      const standardWeekday = {startHour:17,startMinute:30, endHour: 22, endMinute:0, isOpen: true};
+      const standardWeekend = { startHour: 10, startMinute:0, endHour: 20, endMinute:0, isOpen: true };
 
       // 7-day array - Using the array 0-6 as days of the week
       const weeklySchedule = [

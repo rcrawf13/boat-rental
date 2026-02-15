@@ -6,7 +6,6 @@ import ImgPriceComp from "./ImgPriceComp";
 const BookingForm = () => {
     return (
             <div className="bookingForm">
-                {/* <ImageWideCont/> */}
                 <ImgPriceComp/>
                 <APIDurationComponents/>
                     <div className="name">
