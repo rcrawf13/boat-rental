@@ -24,15 +24,26 @@ const shouldDisableTime = (timeValue: Dayjs, view: TimeView) => {
     // 2. Validate Opening Hours (The "-2" Logic)
     // We assume the MINIMUM duration is 2 hours for a start time to be valid
     const minDuration = 2;
-    const isTooEarly = timeValue.hour() < dailyRule.startHour;
-    const isTooLate  = timeValue.hour() > (dailyRule.endHour - minDuration);
+    const isTooEarlyHour = timeValue.hour() < dailyRule.startHour;
+    const isTooLateHour  = timeValue.hour() > (dailyRule.endHour - minDuration);
 
-    if (view === 'hours' && (isTooEarly || isTooLate)) {
+    if (view === 'hours' && (isTooEarlyHour || isTooLateHour)) {
         return true;
     }
 
-    if(view === 'minutes') {
-        return timeValue.minute() < 30 && timeValue.hour() === 17;
+    if (view === 'minutes') {
+        // If we are in the "Opening Hour" (e.g., 5 PM), 
+        // disable any minutes before the "Start Minute" (e.g., 30).
+        if (timeValue.hour() === dailyRule.startHour) {
+            return timeValue.minute() < dailyRule.startMinute;
+        }
+
+        // Disable minutes after 8PM, because min duration for appointment is 2hours
+        if(timeValue.hour() === dailyRule.endHour - minDuration) {
+            return timeValue.minute() > 0;
+        }
+        
+        // ... rest of your minute logic (e.g. collision or closing checks)
     }
 
     // 3. Validate Collision with Existing Bookings
