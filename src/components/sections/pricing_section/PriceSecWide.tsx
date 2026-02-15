@@ -1,7 +1,7 @@
 import DurationButtons from './DurationButtons';
 import BookingButton from '../../booking_button/BookingButton';
 import FadeDiv from '../../fade_div/FadeDiv';
-import ImageWideCont from '../../image_component/ImageWideCont';
+import ImgPriceComp from '../../../routes/booking/components/ImgPriceComp';
 import './pricesecwide.css';
 type setCurrentPriceType = React.Dispatch<React.SetStateAction<string>>;
 
@@ -27,12 +27,12 @@ const PriceSecWide = () => {
             <li>Bluetooth Speaker</li>
             <li>Life Jackets</li>
             <li>Cooler With Ice</li>
-            <li>Free Cancellations <small>(24hrs)</small></li>
           </ul>
         </div>
         <BookingButton variant={'filled'} />
         </div>
-        <ImageWideCont/>
+        <ImgPriceComp/>
+        
     </div>
     </FadeDiv>
   )
